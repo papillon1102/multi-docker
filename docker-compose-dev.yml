@@ -1,11 +1,11 @@
 version: "3"
 services:
   client:
-    image: "papillon1102/multi_docker_client"
+    image: "papillon1102/multi-client"
     mem_limit: 128m
     hostname: client
   server:
-    image: "papillon1102/multi_docker_server"
+    image: "papillon1102/multi-serve"
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "papillon1102/multi_docker_worker"
+    image: "papillon1102/multi-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "papillon1102/multi_docker_nginx"
+    image: "papillon1102/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
